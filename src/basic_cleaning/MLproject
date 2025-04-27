@@ -6,28 +6,29 @@ entry_points:
     parameters:
 
       input_artifact:
-        description: ## ADD DESCRIPTION
+        description: A CSV containg price, rating, location etc for given properties
         type: string
 
       output_artifact:
-        description: ## ADD DESCRIPTION
+        description: A CSV where data been prepared for training. That is, missing data have been imputed, outliers remove, etc.
         type: string
 
       output_type:
-        description: ## ADD DESCRIPTION
+        description: Type of output artifact
         type: string
 
       output_description:
-        description: ## ADD DESCRIPTION
+        description: Description aof output artifact
+        default: "Data with outliers and null values removed"
         type: string
 
       min_price:
-        description: ## ADD DESCRIPTION
-        type: string
+        description: Set the lower price limit. All prices below this will be regarded as outliers and be removed
+        type: float
 
       max_price:
-        description: ## ADD DESCRIPTION
-        type: string
+        description: Set the upper price limit. All prices above this will be regarded as outliers and be removed
+        type: float
 
 
     command: >-
