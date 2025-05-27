@@ -22,12 +22,15 @@ def go(args):
     run.config.update(args)
 
     logger.info("Downloading artifacts")
+    logger.info(f"args.mlflow_model={args.mlflow_model}")
     # Download input artifact. This will also log that this script is using this
     # particular version of the artifact
     model_local_path = run.use_artifact(args.mlflow_model).download()
+    logger.info(f"model_local_path={model_local_path}")
 
     # Download test dataset
     test_dataset_path = run.use_artifact(args.test_dataset).file()
+    logger.info(f"test_dataset_path={test_dataset_path}")
 
     # Read test dataset
     X_test = pd.read_csv(test_dataset_path)

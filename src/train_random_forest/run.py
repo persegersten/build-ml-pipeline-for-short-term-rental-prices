@@ -250,7 +250,7 @@ def export_model(pipe, X_val, model_dir_name):
 
     logger.info("Save model");
 
-    export_path = os.path.join(temp_dir, model_dir_name)
+    export_path = temp_dir # os.path.join(temp_dir, model_dir_name)
 
     # Saves the pipeline in the export_path directory using mlflow.sklearn.save_model
     # function. Provide the signature computed above ("signature") as well as a few

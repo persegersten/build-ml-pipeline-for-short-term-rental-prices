@@ -115,14 +115,27 @@ def go(config: DictConfig):
                 },
             )
 
-            pass
-
         if "test_regression_model" in active_steps:
             ##################
             # Implement here #
+            #      mlflow_model:
+            #         description: An MLflow serialized model
+            #         type: string
+            #
+            #       test_dataset:
+            #         description: The test artifact
+            #         type: string
+            #
+            #     command: "python run.py  --mlflow_model {mlflow_model} --test_dataset {test_dataset}"
             ##################
-
-            pass
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(), "components", "test_regression_model"),
+                "main",
+                parameters={
+                    "mlflow_model": "random_forest_export:v16",
+                    "test_dataset": "test_data.csv:latest"
+                },
+            )
 
 
 if __name__ == "__main__":
